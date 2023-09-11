@@ -1,0 +1,427 @@
+// GENERATED CODE - DO NOT EDIT
+// This file is the run file for Revel.
+// It registers all the controllers and provides details for the Revel server engine to
+// properly inject parameters directly into the action endpoints.
+package run
+
+import (
+	"reflect"
+	"github.com/revel/revel"
+	controllers "github.com/revel/modules/static/app/controllers"
+	_ "github.com/revel/modules/testrunner/app"
+	controllers0 "github.com/revel/modules/testrunner/app/controllers"
+	_ "github.com/revel/revel"
+	_ "github.com/revel/revel/cache"
+	_ "jira-mock-app/app"
+	controllers1 "jira-mock-app/app/controllers"
+	tests "jira-mock-app/tests"
+	time "time"
+	"github.com/revel/revel/testing"
+)
+
+var (
+	// So compiler won't complain if the generated code doesn't reference reflect package...
+	_ = reflect.Invalid
+)
+
+// Register and run the application
+func Run(port int) {
+	Register()
+	revel.Run(port)
+}
+
+// Register all the controllers
+func Register() {
+	revel.AppLog.Info("Running revel server")
+	
+	revel.RegisterController((*controllers.Static)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Serve",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "prefix", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "filepath", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "ServeDir",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "prefix", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "filepath", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "ServeModule",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "moduleName", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "prefix", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "filepath", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "ServeModuleDir",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "moduleName", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "prefix", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "filepath", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers0.TestRunner)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					76: []string{ 
+						"testSuites",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Suite",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "suite", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Run",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "suite", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "test", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					125: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers1.App)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					12: []string{ 
+					},
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers1.Auth)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Login",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					18: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "DoLogin",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "username", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "password", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Signup",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					52: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "DoSignup",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "username", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "mailID", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "password", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers1.Issues)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "New",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					39: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Show",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "issueID", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Edit",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "issueID", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					71: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Create",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "title", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "description", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "status", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "priority", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "assigneeID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "reporterID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "projectID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "sprintID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "dueDate", Type: reflect.TypeOf((*time.Time)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "View",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "issueID", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Update",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "issueID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "title", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "description", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "status", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "priority", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "assigneeID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "reporterID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "dueDate", Type: reflect.TypeOf((*time.Time)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Delete",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "issueID", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers1.Projects)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "New",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Create",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "projectID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "projectName", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "teamName", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "projectOwner", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Show",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "projectID", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Edit",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "projectID", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Update",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "projectID", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "projectName", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "teamName", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "projectOwner", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Delete",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "projectID", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers1.Sprints)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "New",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					48: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Create",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "sprintId", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "name", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "startDate", Type: reflect.TypeOf((*time.Time)(nil)) },
+					&revel.MethodArg{Name: "endDate", Type: reflect.TypeOf((*time.Time)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Show",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "sprintId", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					89: []string{ 
+						"sprint",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Edit",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "sprintId", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					106: []string{ 
+						"sprint",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Update",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "sprintId", Type: reflect.TypeOf((*uint)(nil)) },
+					&revel.MethodArg{Name: "name", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "startDate", Type: reflect.TypeOf((*time.Time)(nil)) },
+					&revel.MethodArg{Name: "endDate", Type: reflect.TypeOf((*time.Time)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Delete",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "sprintId", Type: reflect.TypeOf((*uint)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.DefaultValidationKeys = map[string]map[int]string{ 
+	}
+	testing.TestSuites = []interface{}{ 
+		(*tests.AppTest)(nil),
+	}
+}
